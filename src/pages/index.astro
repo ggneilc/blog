@@ -1,5 +1,9 @@
 ---
+import '../styles/global.css/';
+import Navigation from '../components/navBar.astro';
+import Footer from '../components/footer.astro';
 
+const pageTitle = "Grow Your Mind";
 ---
 
 <html lang="en">
@@ -8,9 +12,45 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Grow Your Mind</title>
+    <title>{pageTitle}</title>
 	</head>
+
 	<body>
-		<h1>Hello World!</h1>
+
+    <Navigation />
+
+    <!-- Hero Image -->
+    <div class="hero-container">
+      <div id="side" class="side-image left">
+        <div id="gradient-overlay"></div>
+      </div>
+
+      <div id="hero" class="hero-image">
+        <p class="hero-quote center">Within us lies the power of our own evolution</p>
+        <p class="hero-quote-sub center">Undeterred by fate, unyielding to externals</p>
+        <div id="gradient-overlay"></div>
+      </div>
+
+      <div id="side" class="side-image right">
+        <div id="gradient-overlay"></div>
+      </div>
+    </div>
+    <!---->
+
+
+    <!-- Body Section -->
+    <div style="width: 50%; height: 1924px; background:rgba(10, 10, 10, 1);" class="center">
+
+      <!-- Blurb -->
+       
+      <!-- Card left -->
+      <!-- Card right -->
+      <!-- Card left -->
+      <!-- Card right -->
+      
+    </div>
+
+    <Footer />
+    
 	</body>
 </html>
