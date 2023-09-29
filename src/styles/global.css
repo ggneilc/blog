@@ -31,7 +31,7 @@ body {
 
 .hero-image {
   width: 50%; /* The main hero image will take up 50% of the width */
-  background: url('/heroImg.jpg');
+  background: url('/heroImg.jpg') no-repeat;
   background-size: cover;
   background-position: center;
 }
