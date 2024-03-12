@@ -5,6 +5,7 @@ pubDate: '2023-03-14 18:21'
 blurb: 'Vim shortcuts and references'
 tags: ["study","linux"]
 ---
+
 <!-- Use text^[link to source] to create footnotes -->
 # Motions
 
