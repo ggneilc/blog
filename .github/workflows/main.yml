@@ -19,6 +19,10 @@ jobs:
 
     - name: Deploy to DigitalOcean
       run: |
-          cd /home/dumbrunner/astroPersonalBlog/
+          ssh -o StrictHostKeyChecking=no root@209.38.174.129 <<EOF
+          cd astroPersonalBlog
           git pull
+          rm -rf /etc/dist/
+          cp -r dist/ /etc/
           sudo systemctl restart nginx
+        EOF
