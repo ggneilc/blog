@@ -5,12 +5,16 @@ import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
 ---
 <style>
-* {
+main {
   text-align: left;
 }
 
 #container {
   width: clamp(500px,50%,1000px);
+}
+
+main h1 {
+  text-align: center;
 }
 </style>
 
@@ -18,6 +22,8 @@ const { frontmatter } = Astro.props;
   <main>
     <div id="container">
       <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.blurb}</p>
+      <p>tags:#{frontmatter.tags[0]}, #{frontmatter.tags[1]}</p>
       <slot />
     </div>
   </main>

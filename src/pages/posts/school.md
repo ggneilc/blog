@@ -1,8 +1,10 @@
-*Date: 2023-06-15 19:30* 
-*Type:* #lecture 
-*Class:* [[📌CS 311 MOC]] 
-
-*Determining the speed of an Algorithm*
+---
+layout: ../../layouts/BlogLayout.astro
+title: 'Analyzing Algorithms'
+pubDate: '2023-06-15 19:30'
+blurb: 'Determinng the speed of an Algorithm'
+tags: ["lecture","cs311"]
+---
 
 Algorithm analysis and [[Big-O]] are intrinsically connected.
 

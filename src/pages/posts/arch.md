@@ -6,6 +6,8 @@ blurb: 'becoming a fully fledged nerd'
 tags: ["project","linux"]
 ---
 
+IMPORTANT: This note is not updated and it my initial ramblings from trying to figure it out the first time. *will be updated soon*.
+
 ## Installing Arch linux
 
 You install arch linux like any other operating system. The only catch is that after the intial boot, every other operating system out there takes you through an automated installation process where you pick and choose the things like keyboard layout, time zone, disk partitions, connecting to wifi, then creating your own user, and afterwords you and fresh into you new windows/whatever desktop.

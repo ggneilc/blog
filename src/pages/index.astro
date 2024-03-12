@@ -4,6 +4,7 @@ import Navigation from '../components/navBar.astro';
 import Footer from '../components/footer.astro';
 import Post from '../components/postlink.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+const allPosts = await Astro.glob('../pages/posts/*.md');
 
 const pageTitle = "Grow your Mind";
 ---
@@ -25,15 +26,14 @@ const pageTitle = "Grow your Mind";
 
         </section>
         <div id="pinned">
-          <Post title="Arch Linux" postname="arch"/>
-          <Post title="Reading" postname="Reading"/>
-          <Post title="VIM movement" postname="vim"/>
+          <Post title="Arch Linux" postname="/posts/arch" blurb="Arch Linux, from scratch. Command line to modern desktop environment"/>
+          <Post title="Reading" postname="/posts/Reading" blurb="Increasing Reading Comprehension for textbooks"/>
+          <Post title="VIM movement" postname="/posts/vim" blurb="VIM cheatsheet guide for moving at the speed of thought"/>
         </div>
       </div>
 
       <!-- Other posts -->
-      <Post />
-      <Post />
-      <Post />
+    <!--{allPosts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)} -->
+    {allPosts.map((post) => <Post title={post.frontmatter.title} postname={post.url} blurb={post.frontmatter.blurb}/>)}
     </main>
 </BaseLayout>

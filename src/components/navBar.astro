@@ -4,12 +4,12 @@
 <style>
   .bar {
     background: rgba(17,17,17,0.29);
-    width: 981;
     width: 100%;
     margin-left: -8;
     margin-right: -8;
     padding: 0;
   }
+
   nav a {
     box-sizing: border-box;
     width: 150px;
@@ -17,23 +17,43 @@
     margin-left: 50px;
     margin-right: 50px;
   }
-  nav {
+
+  .center {
+    display: flex;
+    align-items: center;
+    padding: 5px;
     text-align: center;
   }
 
-  .center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-}
+  a {
+    flex: 1;
+  }
+
+  .search {
+    display: flex;
+    height: 30px;
+    flex: 3;
+  }
+
+  #search-input {
+    flex: 1;
+    padding: 2px;
+    border-radius: 4px;
+    background-color: #101010;
+    color: #fff;
+  }
+
 </style>
 
 <div class='bar'>
   <nav class='center'>
-      <a href="/">home</a>
-      <a href="/physical/">Physical</a>
-      <a href="/culinary/">Culinary</a>
-      <a href="/compsci/">Compsci</a>
+    <a href="/">home</a>
+    <div class='search'>
+      <input type="text" id="search-input" name="search" value="" placeholder=">">
+    </div>
+    <a href="/">logo</a>
+     <!-- <a href="/physical/">Physical</a> -->
+     <!-- <a href="/culinary/">Culinary</a> -->
+     <!-- <a href="/compsci/">Compsci</a>   -->
   </nav>
-  
 </div>
