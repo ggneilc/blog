@@ -1,98 +1,120 @@
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 body {
-  background:rgba(10, 10, 10, 1); 
+  background: #111;
   margin: 0;
+  font-family: Libreville Baskerville;
+  color: #fff;
+  height: 2000px;
 }
 
-/* Hero Image */
 
-#hero {
-  position: relative;
-  background: no-repeat linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url('/heroImg.jpg'), lightgray 50% / cover ;
-  width: 50%;
-  height: 900px;
+main {
+  animation: 1s ease-out 0s 1 slideInTop;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-#side {
-  position: relative;
+#main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  height:calc(100vh - 100px);
 }
 
-.hero-container {
-  display: flex; /* Enables flexbox */
-  width: 100%;
-  height: 900px;
-}
-
-.hero-image {
-  width: 50%; /* The main hero image will take up 50% of the width */
-  background: url('/heroImg.jpg') no-repeat;
-  background-size: cover;
+/* ------------ Hero Image ----------- */
+#hero_img {
+  flex: 4;
+  background-image: url('../../public/studioustatue.png');
+  background-repeat: no-repeat;
   background-position: center;
+  background-size: cover; 
+  background: transparent rgba(11,11,11,0.4) ;
+  width: clamp(500px,50%,1000px);
 }
 
-.side-image {
-  flex-grow: 1; /* This will make the side images take up the remaining space equally */
-  background-size: cover;
-  background-position: center;
-}
-
-.left {
-  background: #0A0B0EE5;
-}
-
-.right {
-  background: #0A0A0E;
-}
-
-.hero-quote {
-  position: absolute;
+#quote {
+  animation: 1s ease-out 0s 1 slideInLeft;
+  position: relative;
   top: 40%;
-  right: 5%;
-  color: #E6E0D4;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Libre Baskerville;
-  font-size: 36px;
-  font-style: normal;
+  font-style: Libreville Baskerville;
+  color: #FFD98C;
+  text-shadow: -2px 2px 5px black;
   font-weight: 700;
-  line-height: normal;
-  text-align: center;
-  width:881px;
+
+  font-size: clamp(1.8rem, 2.7vw, 2.8rem);
 }
 
-.hero-quote-sub {
-  position: absolute;
-  top: 45%;
-  right: 28%;
-  color: #E6E0D4;
-  text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Baskervville;
+#subquote {
+  animation: 1s ease-out 0s 1 slideInRight;
+  position: relative;
+  top: 38%;
+  font-style: Baskerville;
+  color: #fff;
+  text-shadow: -2px 2px 5px black;
+  font-weight: 500;
+
+  font-size: clamp(1.2rem, 2.5vw, 2.0rem);
+}
+
+
+
+/*-- Personal Statement --*/ 
+
+#blurb {
+  margin: 5px;
+  width: clamp(500px,50%,1000px);
+  flex: 2;
+  background-color: #111;
+  border: 1px solid #d9dcdc;
+}
+.header {
   font-size: 28px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  width:452px;
+  text-align: left;
+  padding-left: 20px;
+  text-decoration: underline solid white 1px;
 }
 
 
+/*-- Blog Posts --*/ 
 
 
-/* Body Section */
-
-
-#gradient-overlay {
-  position: absolute;  /* Absolute positioning inside the hero div */
-  bottom: 0;  /* Positioned at the bottom */
-  left: 0;  /* Positioned at the left */
-  width: 100%;  /* Full width */
-  height: 40px;  /* 10% of the hero div's height */
-  background: linear-gradient(to top, rgba(10, 10, 10, 1), rgba(255, 255, 255, 0));
-
+#pinned {
+  margin: 15px;
+  display: flex;
+  width: clamp(500px,50%,1000px);
+  flex-direction: row;
+  align-items: center;
+  background-color: #111;
 }
+
 

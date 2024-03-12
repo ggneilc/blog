@@ -2,57 +2,38 @@
 import '../styles/global.css/';
 import Navigation from '../components/navBar.astro';
 import Footer from '../components/footer.astro';
+import Post from '../components/postlink.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = "Grow Your Mind";
+const pageTitle = "Grow your Mind";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-	</head>
+<BaseLayout pageTitle={pageTitle}>
+  <main>
+      <div id="main-container">
+          
+        <!-- Hero Image -->
+        <section id="hero_img">
+          <h1 id="quote">With every question pondered and every <br> answer sought,</h1>
+          <p id="subquote">the mind stretches further. Embrace the pursuit, for knowledge is endless.</p>
+        </section>
 
-	<body>
+        <!-- Personal Statement -->
+        <section id="blurb">
+          <h1 class="header"> The Vault </h1>
+          <p> Using Obsidian has completely changed the way I view notetaking and learning. It's not solely because of obsidian, but the app also introduced the idea of a **Second Brain** method for *knowledge management*. I've attempted--and actively attempting--to fully adhere to this approach by turning obsidian into an all-in-one (AIO) productivity & electric journal. !!!!!!  Using Obsidian has completely changed the way I view notetaking and learning. It's not solely because of obsidian, but the app also introduced the idea of a **Second Brain** method for *knowledge management*. I've attemptedin-one (AIO) productivity & electric journal. !!!!!!  </p>
 
-    <Navigation />
-
-    <!-- Hero Image -->
-    <div class="hero-container">
-      <div id="side" class="side-image left">
-        <div id="gradient-overlay"></div>
+        </section>
+        <div id="pinned">
+          <Post title="Arch Linux" postname="arch"/>
+          <Post title="Reading" postname="Reading"/>
+          <Post title="VIM movement" postname="vim"/>
+        </div>
       </div>
 
-      <div id="hero" class="hero-image">
-        <p class="hero-quote center">Within us lies the power of our own evolution</p>
-        <p class="hero-quote-sub center">Undeterred by fate, unyielding to externals</p>
-        <div id="gradient-overlay"></div>
-      </div>
-
-      <div id="side" class="side-image right">
-        <div id="gradient-overlay"></div>
-      </div>
-    </div>
-    <!---->
-
-
-    <!-- Body Section -->
-    <div style="width: 50%; height: 1924px; background:rgba(10, 10, 10, 1);" class="center">
-
-      <!-- Blurb xxx-->
-      <p style="box-sizing: border-box; margin-top: 50px; margin-right: 30px;" class="center"> Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
-      
-       
-      <!-- Card left -->
-      <!-- Card right -->
-      <!-- Card left -->
-      <!-- Card right -->
-      
-    </div>
-
-    <Footer />
-    
-	</body>
-</html>
+      <!-- Other posts -->
+      <Post />
+      <Post />
+      <Post />
+    </main>
+</BaseLayout>
