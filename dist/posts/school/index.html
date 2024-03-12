@@ -1,0 +1,159 @@
+<!DOCTYPE html><p><em>Date: 2023-06-15 19:30</em>
+<em>Type:</em> #lecture
+<em>Class:</em> [[📌CS 311 MOC]]</p>
+<p><em>Determining the speed of an Algorithm</em></p>
+<p>Algorithm analysis and [[Big-O]] are intrinsically connected.</p>
+<h2 id="worst-case-runtime">Worst Case Runtime</h2>
+<p>The <strong>worst case</strong> runtime of an algorithm is the function $T:N \to N$ defined as: $T(N):=$ Maximum number of primitive steps executed by the algorithm, on <em>any input</em> of size <code>n</code>.</p>
+<p>Primitive Step:</p>
+<ul>
+<li>variable assignment: <code>x=10</code></li>
+<li>arithmetic: <code>x+42</code></li>
+<li>comparisons: <code>x>10</code></li>
+</ul>
+<p>Non-primitive Steps:</p>
+<ul>
+<li>Loops</li>
+<li>subroutines: <code>Math.pow(x,52)</code>, <code>object.foo()</code></li>
+</ul>
+<blockquote>
+<p>What is the worst case runtime of the following code?</p>
+</blockquote>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">for</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> i</span><span style="color: #F97583">=</span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">; i</span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8">n; i</span><span style="color: #F97583">++</span><span style="color: #E1E4E8">){</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #B392F0">print</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Hello"</span><span style="color: #E1E4E8">) </span><span style="color: #6A737D">//constant time</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>Let c be the time taken by a single iteration of the loop.^[we use c because of our definition from [[Big-O]] makes it super easy to set up the equation $f(n)\leq c*g(n)$ ]</p>
+<p>$$T(n) = \sum_{i=1}^{n} c = c*n \epsilon O(n)$$</p>
+<p>A loop is literally the programming version of a summation above. We are doing a loop (summation) <code>n</code> times, and for each time we are doing <code>c</code> operations, which gives the $\sum_{i=1}^nc$ , once we simplify it we get $c<em>n$ which fits the definition of $c</em>g(n)$ which gives us that $T(n)=c*n\epsilon O(n)$</p>
+<blockquote>
+<p>What is the worst case runtime of the following code?</p>
+</blockquote>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">for</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> i</span><span style="color: #F97583">=</span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">; i</span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8">n; i</span><span style="color: #F97583">++</span><span style="color: #E1E4E8">){</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">for</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> j</span><span style="color: #F97583">=</span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">; j</span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8">n; j</span><span style="color: #F97583">++</span><span style="color: #E1E4E8">){</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">print</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"hello!"</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #E1E4E8">	}</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>Suppose the inner loop takes $c_{1}$ time per iteration.
+Suppose the outer loop takes $c_{2}$ time per iteration, excluding the inner loop.
+$$
+T(n)=\sum_{i=1}^n\left( c_{2}+ \sum_{j=1}^{n}c_{1} \right) =\sum_{i=1}^{n}(c_{2}+n*c_{1}) = c_{1}*n+c_{1}*n^2 \epsilon O(n^2)
+$$
+This follows the same explanation as above, because its just $c_{1}*n+c_{1}<em>n^2$ which is in the form of $c</em>g(n)$ so that is equal to $O(n^2)$.</p>
+<blockquote>
+<p>Slightly challenging more variation:</p>
+</blockquote>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">for</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> i</span><span style="color: #F97583">=</span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">; i</span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8">n; i</span><span style="color: #F97583">++</span><span style="color: #E1E4E8">){</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">for</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> j</span><span style="color: #F97583">=</span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">; j</span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8">i; j</span><span style="color: #F97583">++</span><span style="color: #E1E4E8">){ </span><span style="color: #6A737D">//depends on i</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">print</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"hello!"</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">	}</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>Let $c_{1}$ and $c_{2}$ be the inner and outer loop respectively.</p>
+<p>$$
+T(n) = \underbrace{ \sum_{i=1}^n \left( c_{2}+\sum_{j=1}^ic_{1} \right) }<em>{ \text{The Loops} }  = \underbrace{ \sum</em>{i=1}^nc_{2}+\sum_{i=1}^n\sum_{j=1}^ic_{1} }<em>{ \text{distribute summation} } = \underbrace{ c</em>{2}*n + \sum_{i=1}^nc_{1}*i }<em>{ \text{simplify} } = c</em>{2}*n+c_{1}\underbrace{ \sum_{i=1}^ni }<em>{ \text{identity} } = \underbrace{ c</em>{2}<em>n+c_{1}\left( \frac{n(n+1)}{2} \right) }_{ f(n)\leq c</em>g(n) } \epsilon O(n^2)
+$$</p>
+<blockquote>
+<p>What is the best &#x26; worst case runtime?</p>
+</blockquote>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">myFunction</span><span style="color: #E1E4E8">(array A){</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">A</span><span style="color: #E1E4E8">[</span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">] </span><span style="color: #F97583">==</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> max </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">A</span><span style="color: #E1E4E8">[</span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">];</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">for</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> i</span><span style="color: #F97583">=</span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">; i</span><span style="color: #F97583">&#x3C;</span><span style="color: #E1E4E8">n; i</span><span style="color: #F97583">++</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (max </span><span style="color: #F97583">&#x3C;</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">A</span><span style="color: #E1E4E8">[i])</span></span>
+<span class="line"><span style="color: #E1E4E8">			max </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">A</span><span style="color: #E1E4E8">[i];</span></span>
+<span class="line"><span style="color: #E1E4E8">	}</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> max;</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>The best case is $O(1)$, no matter the input size, that first condition is just a <em>comparison</em>, which is a primitive step that executes in 1 step no matter the length of the array (<code>n</code>).</p>
+<p>The worst case is $O(n)$, as we previously showed a loop that runs <code>n</code> times and does a constant number of primitive steps within the loop runs in $c*n$ which is $O(n)$.</p>
+<blockquote>
+<p>What is the worst case runtime in terms of n?</p>
+</blockquote>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">for</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> i</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">n; i</span><span style="color: #F97583">>=</span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">; i</span><span style="color: #F97583">/=</span><span style="color: #79B8FF">2</span><span style="color: #E1E4E8">) { </span><span style="color: #6A737D">//starts at n and divides by 2</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #B392F0">print</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Hello!"</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>iteration</th><th>1</th><th>2</th><th>3</th><th>4</th><th>…</th><th>k</th></tr></thead><tbody><tr><td>i</td><td>n</td><td>$\frac{n}{2}$</td><td>$\frac{n}{2^2}$</td><td>$\frac{n}{2^3}$</td><td>…</td><td>1 = $\frac{n}{2^{k-1}}$</td></tr></tbody></table>
+<p>$$
+1 = \frac{n}{2^{k-1}} \implies\underbrace{  2^{k-1} = n  }<em>{ \text{multipy by denominator} }\implies \underbrace{ k-1 = \log</em>{2}n }<em>{ \text{get rid of exponent} } \implies k=\log</em>{2}n
+$$
+$T(n) \epsilon O(\log n)$ , All $\log n$ is the same, the base does not matter.</p>
+<p>Dividing something in half is the same as a binary search (in essance) which is therefore $\log_{2}n$, so think logs when seeing division.</p>
+<blockquote>
+<p>What is the worst case runtime of the following?</p>
+</blockquote>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">public</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">MyFunction2</span><span style="color: #E1E4E8">(array A){</span></span>
+<span class="line"><span style="color: #E1E4E8">	n </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> A.length;</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (n </span><span style="color: #F97583">&#x3C;</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">5</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">||</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">A</span><span style="color: #E1E4E8">[</span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">]</span><span style="color: #F97583">%</span><span style="color: #79B8FF">2</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">==</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">){</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #F97583">for</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> i</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">n; i</span><span style="color: #F97583">>=</span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">; i</span><span style="color: #F97583">/=</span><span style="color: #79B8FF">3</span><span style="color: #E1E4E8">){</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #B392F0">foo</span><span style="color: #E1E4E8">(A) </span><span style="color: #6A737D">//O(n^2)</span></span>
+<span class="line"><span style="color: #E1E4E8">		}</span></span>
+<span class="line"><span style="color: #E1E4E8">	}</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">else</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">bar</span><span style="color: #E1E4E8">(A) </span><span style="color: #6A737D">//O(nlogn)</span></span>
+<span class="line"><span style="color: #E1E4E8">	}</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>the for loop is the same as the previous example where it is being divided by a number each iteration which points to $O(\log n)$, the base does not matter. The loop then performs a $O(n^2)$ operation, so it is $O(\log n) * O(n^2) = O(n^2\log n)$. So the problem now is $O(n^2\log n)$ or $O(n\log n)$ bigger? We can tell that a exponential is bigger with our eyes, so $O(n^2\log n)$ is bigger, but we might have to mathematically prove that with a definition in the future.</p>
+<blockquote>
+<p>Another loop within a loop example:</p>
+</blockquote>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">i </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">while</span><span style="color: #E1E4E8"> (i</span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8">n) {</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #F97583">for</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">int</span><span style="color: #E1E4E8"> j</span><span style="color: #F97583">=</span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">; j</span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8">i; j</span><span style="color: #F97583">++</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">print</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Hello!"</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #E1E4E8">	}</span></span>
+<span class="line"><span style="color: #E1E4E8">	i </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">2</span><span style="color: #F97583">*</span><span style="color: #E1E4E8">i;</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>We can represent the inner loop as follows:
+$$
+c_{2}+\sum_{j=1}^ic_{1} = c_{2}+c_{1}*i
+$$</p>
+<p>and now for figuring out how many times the outer loop will iterate:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>iteration</th><th>1</th><th>2</th><th>3</th><th>4</th><th>…</th><th>k</th></tr></thead><tbody><tr><td>operations</td><td>$c_{2}+c_{1}*1$</td><td>$c_{2}+c_{1}*2$</td><td>$c_{2}+c_{1}*2^2$</td><td>$c_{2}+c_{1}*2^3$</td><td>…</td><td>$c_{2}+c_{1}*2^{\log_{2}n}$</td></tr></tbody></table>
+<p>$$
+\underbrace{ c_{2}<em>\log_{2}n }<em>{ \text{pull out all c2 terms} } + \underbrace{ c</em>{1}\sum_{j=0}^{\log_{2}n}2^j }<em>{ \text{geometric series} } = c</em>{2}</em>\log_{2}n + c_{1}(2n-1) \implies \underbrace{ c_{2}*\log_{2}n+c_{1}<em>2n-c_{1} }_{ c</em>g(n) \text{ where 2n > }\log_{2}n } \implies \epsilon O(n)
+$$</p>

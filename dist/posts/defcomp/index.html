@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v3.1.2"><title>Define Computer</title><style>@keyframes slideInLeft{0%{transform:translate(-100%)}to{transform:translate(0)}}@keyframes slideInRight{0%{transform:translate(100%)}to{transform:translate(0)}}@keyframes slideInTop{0%{transform:translateY(-100%)}to{transform:translateY(0)}}body{background:#111;margin:0;font-family:Libreville Baskerville;color:#fff;height:2000px}main{animation:1s ease-out 0s 1 slideInTop;display:flex;flex-direction:column;align-items:center;text-align:center}#main-container{display:flex;flex-direction:column;align-items:center;text-align:center;height:calc(100vh - 100px)}#hero_img{flex:4;background-image:url(/_astro/studioustatue.9b129d4e.png);background-repeat:no-repeat;background-position:center;background-size:cover;background:transparent rgba(11,11,11,.4);width:clamp(500px,50%,1000px)}#quote{animation:1s ease-out 0s 1 slideInLeft;position:relative;top:40%;font-style:Libreville Baskerville;color:#ffd98c;text-shadow:-2px 2px 5px black;font-weight:700;font-size:clamp(1.8rem,2.7vw,2.8rem)}#subquote{animation:1s ease-out 0s 1 slideInRight;position:relative;top:38%;font-style:Baskerville;color:#fff;text-shadow:-2px 2px 5px black;font-weight:500;font-size:clamp(1.2rem,2.5vw,2rem)}#blurb{margin:5px;width:clamp(500px,50%,1000px);flex:2;background-color:#111;border:1px solid #d9dcdc}.header{font-size:28px;text-align:left;padding-left:20px;text-decoration:underline solid white 1px}#pinned{margin:15px;display:flex;width:clamp(500px,50%,1000px);flex-direction:row;align-items:center;background-color:#111}.bar[data-astro-cid-35x3ascb]{background:rgba(17,17,17,.29);width:981;width:100%;margin-left:-8;margin-right:-8;padding:0}nav[data-astro-cid-35x3ascb] a[data-astro-cid-35x3ascb]{box-sizing:border-box;width:150px;height:30px;margin-left:50px;margin-right:50px}nav[data-astro-cid-35x3ascb]{text-align:center}.center[data-astro-cid-35x3ascb]{margin:auto;width:50%;padding:10px}
+[data-astro-cid-4dqtj3le]{text-align:left}#container[data-astro-cid-4dqtj3le]{width:clamp(500px,50%,1000px)}
+</style></head><body><div class="bar" data-astro-cid-35x3ascb><nav class="center" data-astro-cid-35x3ascb><a href="/" data-astro-cid-35x3ascb>home</a><a href="/physical/" data-astro-cid-35x3ascb>Physical</a><a href="/culinary/" data-astro-cid-35x3ascb>Culinary</a><a href="/compsci/" data-astro-cid-35x3ascb>Compsci</a></nav></div><!-- Centered Column --><main data-astro-cid-4dqtj3le><div id="container" data-astro-cid-4dqtj3le><h1 data-astro-cid-4dqtj3le>Define Computer</h1><h2 id="main-points">Main Points</h2>
+<ul>
+<li>[[#Define a Computer]]</li>
+<li>[[#Language to Hardware]]</li>
+<li>[[#Memory]]</li>
+<li>[[#Communicating with other Computers]]</li>
+</ul>
+<h1 id="define-a-computer">Define a Computer</h1>
+<blockquote>
+<p>[!tip] Computer
+There are 5 main components that make up a computer: Input, Output, Memory, Dataflow, Control.
+Dataflow and Control are usually grouped and referred to as the processor</p>
+</blockquote>
+<p>Every component of a computer can be categorized to one of the groups in the following image:</p>
+<p>![[Pasted image 20240122015403.png]]</p>
+<p>The most common and interesting I/O device is the graphics display. It renders an <em>image</em>, which is a matrix composed of <em>picture elements</em> (pixels), where each pixel corresponds to a transistor that controls the light display.  The pixels can be represented as a matrix of bits, called a <strong>bit map</strong>, which is used to control the transistor at each pixel location on the display, and each pixel can have multiple bits to display millions of different colors.</p>
+<p>The computer uses a <strong>frame buffer</strong> to store the bit map; the image to be represented onscreen is stored in the frame bugger, and the bit pattern per pixel is read out to the graphics display at the refresh rate. The goal of the bit map is to represent faithfully what is on the screen.</p>
+<p>![[Pasted image 20240122015942.png]]</p>
+<p>The <em><strong>processor</strong></em></p>
+<hr>
+<h1 id="language-to-hardware">Language to Hardware</h1>
+<p>[[Computing Principiles#Abstraction|Abstraction]] is such an important idea because of how difficult programming becomes when dealing with hardware and the lowest levels of software. In order to make things easier, abstraction is <em>necessary</em> because it enables computer designers to focus on <em>functions</em> rather than <em>hardware</em>.</p>
+<blockquote>
+<p>[!def] Instruction Set Architecture
+The abstraction layer between the hardware and lowest level software is so important that it is given its own name: <em><strong>Instruction Set Architecture</strong></em>.
+The instruction set architecture includes anything programmers need to know to make a binary machine language program work correctly, including instruction, I/O devices, and so on.</p>
+</blockquote>
+<blockquote>
+<p><strong>Ex.)</strong> We can talk about the functions of a digital clock (keeping time, displaying the time, setting the alarm) separately from the clock hardware (quartz crystal, LED, plastic buttons).</p>
+</blockquote>
+<p>An <em><strong>Implementation</strong></em> is hardware that obeys an architecture abstraction.</p>
+<blockquote>
+<p>[!fact] Big Idea
+Both Hardware and software consist of hierarchical layers using abstraction, with each lower layer hiding details from the level above. One key interface between the levels of abstraction is the <em>instruction set architecture</em> — the interface between the hardware and low-level software. This abstract interface enables many <em>implementations</em> of varying cost and performance to run identical software.</p>
+</blockquote>
+<hr>
+<h1 id="memory">Memory</h1>
+<p>There are 2 types of memory:</p>
+<ul>
+<li>Volatile $\to$ when it loses power, it forgets</li>
+<li>Nonvolatile $\to$ persists</li>
+</ul>
+<p>To distinguish between the volatile memory used to hold data and programs while they are running and this <em>nonvolatile</em> memory used to store data and programs between runs, the term <strong>primary/main memory</strong> is used for running programs, and <strong>secondary memory</strong> for storage.</p>
+<hr>
+<h1 id="communicating-with-other-computers">Communicating with other Computers</h1>
+<p>Computer networks interconnect whole computers, allowing users to extend the power of computing by including communication.</p>
+<p>Networks have several main advantages:</p>
+<ul>
+<li><strong>Communication</strong>: Information is exchanged between computers at high speeds</li>
+<li><strong>Resource sharing</strong>: Rather than each computer having its own I/O devices, computers on the network can share I/O devices</li>
+<li><strong>Nonlocal access</strong>: By connecting computers over logn distances, users need not be near the computer they are using</li>
+</ul>
+<p>Networks vay in length and performance, and the cost of communication increases according to speed and distance the information travels.</p>
+<p>The most popular connection type being <em>ethernet</em>, which is an example of <strong>Local Area Network (LAN)</strong>, which constract to <strong>Wide Area Networks</strong> which cross continents and are the backbone of the Internet, which are usually connected with fiber optic cables.</p>
+<p><em><strong>Wireless technology</strong></em> has only been around for the past decade, which has enabled <strong>Personal Mobile Devices (PMDs)</strong> to exist and flourish. More recent innovations in radio are used for memory and microprocessors enabled significant improvement in price.</p>
+<hr></div></main><footer><p>more from me</p><a href="https://www.github.com/ggneilc">github</a><!--<a href={`https://www.${platform}.com/${username}`}>{platform}</a> --><a href="https://www.youtube.com/@neilc1984">youtube</a><!--<a href={`https://www.${platform}.com/${username}`}>{platform}</a> --></footer></body></html>

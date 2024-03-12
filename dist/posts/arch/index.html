@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v3.1.2"><title>Arch Linux</title><style>@keyframes slideInLeft{0%{transform:translate(-100%)}to{transform:translate(0)}}@keyframes slideInRight{0%{transform:translate(100%)}to{transform:translate(0)}}@keyframes slideInTop{0%{transform:translateY(-100%)}to{transform:translateY(0)}}body{background:#111;margin:0;font-family:Libreville Baskerville;color:#fff;height:2000px}main{animation:1s ease-out 0s 1 slideInTop;display:flex;flex-direction:column;align-items:center;text-align:center}#main-container{display:flex;flex-direction:column;align-items:center;text-align:center;height:calc(100vh - 100px)}#hero_img{flex:4;background-image:url(/_astro/studioustatue.9b129d4e.png);background-repeat:no-repeat;background-position:center;background-size:cover;background:transparent rgba(11,11,11,.4);width:clamp(500px,50%,1000px)}#quote{animation:1s ease-out 0s 1 slideInLeft;position:relative;top:40%;font-style:Libreville Baskerville;color:#ffd98c;text-shadow:-2px 2px 5px black;font-weight:700;font-size:clamp(1.8rem,2.7vw,2.8rem)}#subquote{animation:1s ease-out 0s 1 slideInRight;position:relative;top:38%;font-style:Baskerville;color:#fff;text-shadow:-2px 2px 5px black;font-weight:500;font-size:clamp(1.2rem,2.5vw,2rem)}#blurb{margin:5px;width:clamp(500px,50%,1000px);flex:2;background-color:#111;border:1px solid #d9dcdc}.header{font-size:28px;text-align:left;padding-left:20px;text-decoration:underline solid white 1px}#pinned{margin:15px;display:flex;width:clamp(500px,50%,1000px);flex-direction:row;align-items:center;background-color:#111}.bar[data-astro-cid-35x3ascb]{background:rgba(17,17,17,.29);width:981;width:100%;margin-left:-8;margin-right:-8;padding:0}nav[data-astro-cid-35x3ascb] a[data-astro-cid-35x3ascb]{box-sizing:border-box;width:150px;height:30px;margin-left:50px;margin-right:50px}nav[data-astro-cid-35x3ascb]{text-align:center}.center[data-astro-cid-35x3ascb]{margin:auto;width:50%;padding:10px}
+[data-astro-cid-4dqtj3le]{text-align:left}#container[data-astro-cid-4dqtj3le]{width:clamp(500px,50%,1000px)}
+</style></head><body><div class="bar" data-astro-cid-35x3ascb><nav class="center" data-astro-cid-35x3ascb><a href="/" data-astro-cid-35x3ascb>home</a><a href="/physical/" data-astro-cid-35x3ascb>Physical</a><a href="/culinary/" data-astro-cid-35x3ascb>Culinary</a><a href="/compsci/" data-astro-cid-35x3ascb>Compsci</a></nav></div><!-- Centered Column --><main data-astro-cid-4dqtj3le><div id="container" data-astro-cid-4dqtj3le><h1 data-astro-cid-4dqtj3le>Arch Linux</h1><h2 id="installing-arch-linux">Installing Arch linux</h2>
+<p>You install arch linux like any other operating system. The only catch is that after the intial boot, every other operating system out there takes you through an automated installation process where you pick and choose the things like keyboard layout, time zone, disk partitions, connecting to wifi, then creating your own user, and afterwords you and fresh into you new windows/whatever desktop.</p>
+<p>Arch does absolutely <em><strong>none</strong></em> of this for you :)</p>
+<h3 id="installing-with-the-live-environment">Installing with the live environment</h3>
+<p>Installing arch works in this order:</p>
+<ol>
+<li>Flash usb &#x26; plug in
+<ol>
+<li>boot in UEFI and select the usb to boot from, wait for installation environment to load</li>
+</ol>
+</li>
+<li>Now make sure basics are working:
+<ol>
+<li>Set the keyboard layout</li>
+<li>Connect to internet</li>
+<li>update the system clock</li>
+</ol>
+</li>
+<li>Now we prep the disks:
+<ol>
+<li>partition the disks</li>
+<li>format the disks</li>
+<li>Mount the partitions</li>
+</ol>
+</li>
+</ol>
+<p>And now we can install arch linux!</p>
+<ol>
+<li>
+<p>Select the mirror server to download from</p>
+</li>
+<li>
+<p>install essential packages with pacstrap</p>
+<p><code>pacstrap -K /mnt base base-devel linux linux-firmware NetworkManager sudo nvim git </code></p>
+</li>
+</ol>
+<h3 id="configure-the-system">Configure the System</h3>
+<ol>
+<li>Generate the fstab file (<strong>f</strong>ile <strong>s</strong>ystem <strong>tab</strong>le)</li>
+<li>Change the root to the new system</li>
+<li>Set the time zone</li>
+<li>Localization</li>
+<li>Network configuration</li>
+<li>set root password</li>
+<li>boot loader</li>
+</ol>
+<hr>
+<h2 id="post-install">Post install</h2>
+<h3 id="window-manager-desktop-environment">Window Manager (Desktop Environment)</h3>
+<p>Hyprland seems to be the best newest option: it’s dynamic, easiest to configure (text-based), smooth, and has nice animations :D</p>
+<p>switching to a tiling window manager creates a whole new desktop with <em>absolutely fucking nothing</em> on it. Like literally no taskbar no system alerts no notifications or anything because <strong>you</strong> have to install all the things <em><strong>you</strong></em> want.</p>
+<p>Must-haves:</p>
+<ul>
+<li>notification daemon</li>
+<li>Authentication agent</li>
+<li>qt5 &#x26; qt6 libraries (just normal dependencies)</li>
+</ul>
+<p>These are the minimum things a desktop needs to be able to be usable and not require switching over to a different desktop to then configure or download smth required in hyprland.</p>
+<p><strong>notification daemon</strong> -> something running in the background keeping track of and displaying notifications. Best choice: <strong>Dunst</strong></p>
+<p><strong>authentication agent</strong> -> enables apps to request higher privilege (so your GUI for add/remove software can request root password to download packages). Best Choice: KDE-auth (recommended by hyprland)</p>
+<p>First things to add after:</p>
+<ul>
+<li>Status bar</li>
+<li>XDG desktop portal</li>
+<li>app launchers</li>
+<li>wallpaper</li>
+<li>clipboard</li>
+<li>screensharing</li>
+</ul>
+<p><strong>Status bar</strong> -> lots of different options for customizing what and how you want activities/workspaces/system info/weather/time displayed. best choice: <strong>waybar</strong></p>
+<p>you can alternatively use the nwg-shell project’s suite of desktop goodies.</p>
+<p><strong>app launcher</strong> -> way to quickly open apps/run files: <strong>tofi</strong></p>
+<p><strong>wallpaper</strong> -> yes, you need to download a program so you can have a wallpaper: <strong>hyprpaper</strong></p>
+<p><strong>screensharing</strong>: just a standard app called: <strong>pipeware</strong></p>
+<p>clipboard: cliphist -> lets you also copy images</p>
+<p>desktop portal: xdg-desktop-portal-hyprland-git</p>
+<h3 id="more-downloads">more downloads</h3>
+<h4 id="cli-tools">CLI tools</h4>
+<ul>
+<li>kitty -> terminal</li>
+<li>ranger -> file explorer in terminal</li>
+<li>bat -> better cat command (prints code highlighting)</li>
+<li>btop -> better htop (system information)</li>
+<li>exa (prettier ls command)</li>
+<li>zoxide (better cd command)</li>
+<li>git
+<ul>
+<li>lazygit</li>
+</ul>
+</li>
+<li>fzf -> command line fuzzy finder</li>
+</ul>
+<p>![[Pasted image 20230414103652.png]]</p>
+<p><a href="https://gist.github.com/heroheman/aba73e47443340c35526755ef79647eb">ranger command cheat sheet</a></p>
+<h4 id="must-have-applications">Must have applications</h4>
+<p><strong>firefox</strong> -> internet access
+<strong>obsidian</strong> -> take notes &#x26; 2nd brain
+<strong>nvim</strong> -> open any text document/full IDE
+<strong>discord</strong> -> communicate with others</p>
+<p>with these 4 applications you can seriously do absolutely anything, and it’s pretty wild to think about.</p>
+<p><strong>firefox</strong> -> cascade one line theme -> very minimalist and keyboard friendly (install vimium (maybe make firefox account?))</p>
+<p><strong>neovim</strong> -> better vim, NvChad with minor adjustments -> i will put config files on my github</p>
+<p>dickcock &#x26; obsidian are self explanatory and lit</p>
+<hr>
+<h2 id="further-enhancements--productivity">Further Enhancements &#x26; Productivity</h2>
+<p>Ideally, this machine should be good at performing any computing related task, be it interface with the network, manage files/users/groups/processes within the system, working with json/spreadsheets/pdf/docx, or creating software / digital art.</p>
+<p>desktops should reflect the kind of work that happens:</p>
+<ol>
+<li>Obsidian -> reading, notetaking (more than enough room to open firefox for readings)</li>
+<li>Web Dev  nvim</li>
+<li>System -> anything relating to downloads/users/process/monitoring or <em>Cyber Security</em></li>
+<li>jetbrains java/data</li>
+</ol>
+<p>TV:</p>
+<ul>
+<li>Large spreadsheets / files</li>
+<li>Background music</li>
+<li>communication</li>
+</ul>
+<p><strong>Add desktop files/entries to home/neilc/.local/applications</strong></p>
+<h3 id="checklist">Checklist:</h3>
+<ul class="contains-task-list">
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> download fonts</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> waybar</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> hyprpaper</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> authentication agent</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> pipeware</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> pulseaudio</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> clipboard</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> screensharing</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> configure firefox</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> download over projects</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> configure bash</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> look more into hyprland configs</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> configure waybar</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> dunst -> better styled notifications</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> fix nvim -> make it more tailored for you!</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> fix ranger to be able to open all documents types</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled> add hyprctrl/kitty scripts to open workspaces</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> figure out difference between kitty &#x26; tmux $\to$ kitty and tmux together are fine!</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> autologin script that starts Hyprland</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> Swaylock</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> What does wayland let me do/hinder me from doing -> just a display protocol</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> see if there are any conflicts with bash &#x26; zsh</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled> make sure all binaries &#x26; services are correct, uninstall any applications</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" checked disabled> find out why git is requiring this token :
+Github Token: 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</p>
+</li>
+</ul></div></main><footer><p>more from me</p><a href="https://www.github.com/ggneilc">github</a><!--<a href={`https://www.${platform}.com/${username}`}>{platform}</a> --><a href="https://www.youtube.com/@neilc1984">youtube</a><!--<a href={`https://www.${platform}.com/${username}`}>{platform}</a> --></footer></body></html>

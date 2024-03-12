@@ -1,0 +1,101 @@
+<!DOCTYPE html><p><em>Date: 2023-03-14 18:21</em>
+#study #linux
+[[📌 Compsci Projects MOC]]</p>
+<p><em>Vim shortcuts and references</em></p>
+<h1 id="motions">Motions</h1>
+<p>![[Pasted image 20230314182250.png]]</p>
+<p>some notes:</p>
+<ul>
+<li>Motions can be combined with any number to repeat that motion that number of times (3h, 10b, 5w, etc)</li>
+<li>You can combine commands with motions to do that command over that motion, (and because we just learned you can add numbers to motions, you can then combine all these together) ex: y$ copies to the end of the line, ‘3db’ will <strong>d</strong>elete 3 words <strong>b</strong>ehind the cursor.</li>
+</ul>
+<hr>
+<h1 id="movements-to-live-by">Movements to live by:</h1>
+<p><strong>fuck the escape key use &#x3C;ctrl + [> instead</strong></p>
+<ul>
+<li>typical one line movements with right hand (HJKL)</li>
+<li>bounce through words with the left hand (web)</li>
+<li>end of line with $ beginning of line with 0</li>
+<li>go up and down a page with
+<ul>
+<li>&#x3C;ctrl+f> for full page down</li>
+<li>&#x3C;ctrl+b> for full page up (think going back up)</li>
+<li>&#x3C;ctrl+u> for half page up (u for up)</li>
+<li>&#x3C;ctrl+d> for half page down (d for down)
+you should remap these last to automatically do <code>zz</code> after to center the cursor on screen so it isn’t disorienting.</li>
+</ul>
+</li>
+<li>&#x3C;ctrl+x> to exit terminal mode</li>
+<li>&#x3C;ctrl+w> + HJKL to move through buffers</li>
+<li>* goes to the next instance of a word your cursor is on</li>
+<li># goes to the previous instance of a word your cursor is on</li>
+<li>/ begins searching, pressing <code>n</code> goes to the next searched term and <code>N</code> to go to previous</li>
+<li><code>u</code> for undo and <code>ctrl+r</code> for redo</li>
+<li><code>shift+g</code> for the end of the page</li>
+<li>’{’ goes to next blank line, ’}’ goes to previous blank line</li>
+<li>’[’ goes to top of page ’]’ goes to bottom of page</li>
+</ul>
+<hr>
+<h2 id="not-related-to-motions-commands">Not related to Motions Commands</h2>
+<p>use <code>space + ff</code> to find files
+use <code>space + rn</code> for relative line numbers</p>
+<p><strong>File Tree</strong>:</p>
+<ul>
+<li>open with <code>ctrl + n</code></li>
+<li>while inside you can move with HJKL</li>
+<li>create new files with <code>a</code>
+<ul>
+<li>you can make a directory by ending with a /: <code>styles/</code></li>
+</ul>
+</li>
+<li>copy and paste with <code>c</code> and <code>p</code></li>
+<li>rename files with <code>r</code></li>
+<li>focus the file tree with <code>space + e</code></li>
+</ul>
+<p><strong>Buffers:</strong></p>
+<ul>
+<li><code>space + b</code> creates a new buffer</li>
+<li><code>space + h</code> creates a new terminal</li>
+<li><code>tab</code> cycles through buffers</li>
+<li><code>space + x</code> closes the buffer</li>
+</ul>
+<p><strong>Windows</strong></p>
+<ul>
+<li><code>ctrl + w</code> activates ‘window mode’ (wm)</li>
+<li>use <code>wm + s | v</code> to split the window or vertically split</li>
+<li>use <code>wm + HJKL</code> to move to another window</li>
+<li><code>ctrl + q</code> to quit a window</li>
+</ul>
+<h2 id="current-setup">Current setup</h2>
+<p>NvChad - base config</p>
+<p>remaps I should make:</p>
+<ul>
+<li>Capital H moves to beginning of line</li>
+<li>Capital L moves to the end of the line</li>
+</ul>
+<hr>
+<h1 id="vimium">Vimium</h1>
+<p>this shit makes using the browser with just your keyboard pretty intuitive:</p>
+<p>Navigation</p>
+<ul>
+<li>‘jk’ moves the screen up and down</li>
+<li>‘ud’ moves half page up and down</li>
+<li>‘hl’ moves the screen left and right (if applicable)</li>
+<li>‘JK’ moves between tabs</li>
+<li>‘HL’ goes forward and backward in history</li>
+<li>‘f’ lets you select something on the page</li>
+<li>‘F’ open it in a new tab</li>
+<li>‘gi’ <strong>g</strong>oes to the first text input (ex. youtube search bar)</li>
+</ul>
+<p>Cool shit</p>
+<ul>
+<li>‘r’ reloads the page</li>
+<li>‘t’ creates a new tab</li>
+<li>‘x’ closes current tab, ‘X’ restores the tab</li>
+<li>‘o’ opens URL, bookmark, or history ‘O’ opens it in a new tab</li>
+<li>‘b’ open a bookmark, ‘B’ opens in a new tab</li>
+<li>’&#x3C;&#x3C;’ moves tab to the left, ’>>’ moves tab to the right</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<p><a href="https://www.youtube.com/watch?v=w7i4amO_zaE">https://www.youtube.com/watch?v=w7i4amO_zaE</a>
+<a href="https://vimtricks.com/">https://vimtricks.com/</a></p>
