@@ -1,0 +1,26 @@
+---
+import '../styles/global.css';
+import BaseLayout from './BaseLayout.astro';
+
+const { frontmatter } = Astro.props;
+---
+<style>
+* {
+  text-align: left;
+}
+
+#container {
+  width: clamp(500px,50%,1000px);
+}
+</style>
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <main>
+    <div id="container">
+      <h1>{frontmatter.title}</h1>
+      <slot />
+    </div>
+  </main>
+</BaseLayout>
+
+
