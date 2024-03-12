@@ -19,7 +19,7 @@ jobs:
 
     - name: Deploy to DigitalOcean
       run: |
-          ssh -o StrictHostKeyChecking=no root@209.38.174.129 <<EOF
+        ssh -o StrictHostKeyChecking=no root@209.38.174.129 <<EOF
           cd astroPersonalBlog
           git pull
           rm -rf /etc/dist/
