@@ -1,9 +1,11 @@
-*Date: 2023-03-14 18:21*
-#study #linux 
-[[📌 Compsci Projects MOC]]
-
-*Vim shortcuts and references*
-
+---
+layout: ../../layouts/BlogLayout.astro
+title: 'Vim Movement Guide'
+pubDate: '2023-03-14 18:21'
+blurb: 'Vim shortcuts and references'
+tags: ["study","linux"]
+---
+<!-- Use text^[link to source] to create footnotes -->
 # Motions
 
 ![[Pasted image 20230314182250.png]]
