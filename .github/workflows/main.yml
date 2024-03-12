@@ -19,6 +19,6 @@ jobs:
 
     - name: Deploy to DigitalOcean
       run: |
-          cd astroPersonalBlog
+          cd /home/dumbrunner/astroPersonalBlog/
           git pull
           sudo systemctl restart nginx
